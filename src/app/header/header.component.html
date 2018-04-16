@@ -1,0 +1,47 @@
+<div class="master-container" [class.is-mobile]="mobileQuery.matches" *ngIf="shouldRun" mat-elevation-z8>
+  <mat-toolbar color="accent" class="toolbar">
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="snav.toggle()">
+        <mat-icon matTooltip="Options"
+                  matTooltipPosition="right">menu
+        </mat-icon>
+      </button>
+      <span class="header-brand-text">HUMHERE</span>
+
+      <span class="spacer"></span>
+      <button
+        mat-icon-button>
+        <mat-icon matTooltip="Notifications"
+                  matTooltipPosition="left">message
+        </mat-icon>
+      </button>
+
+      <button id="menuBtn" mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon matTooltip="Manage" matTooltipPosition="right">account_circle</mat-icon>
+      </button>
+
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Company settings</button>
+        <button mat-menu-item>Account & Profile</button>
+        <button mat-menu-item>Payout Information</button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item>Logout</button>
+      </mat-menu>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-sidenav-container class="sidenav-container"
+                         [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+      <mat-nav-list [selectedIndex]="selectedTab">
+        <a mat-list-item routerLink="." *ngFor="let nav of navItems" class="nav-text" [selectedIndex]="selectedIndex" (click)="select(evt)" ng-class="{selectedIndex: selectedIndex===$index}">
+          <mat-icon style="margin-right: 15px; font-size: 1.5em;vertical-align:top">{{nav.icon}}</mat-icon>
+          {{nav.text}}</a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <p *ngFor="let content of fillerContent">{{content}}</p>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
