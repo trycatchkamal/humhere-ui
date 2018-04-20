@@ -1,24 +1,91 @@
-<app-header></app-header>
+<div class="page-wrap">
+  <mat-toolbar color="accent">
+    <button
+      type="button"
+      mat-icon-button
+      (click)="isExpanded = !isExpanded"
+      title="Navigation panel">
+      <mat-icon matTooltip="Options"
+                matTooltipPosition="right">menu
+      </mat-icon>
+    </button>
+    <button [routerLink]="['/']" class="header"
+      mat-button>
+      <h1>HUMHERE</h1>
+    </button>
 
-<!--
+    <span class="spacer"></span>
+    <button
+      mat-icon-button>
+      <mat-icon matTooltip="Notifications"
+                matTooltipPosition="left">message
+      </mat-icon>
+    </button>
 
-<mat-card class="example-card">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>Shiba Inu</mat-card-title>
-    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-  </mat-card-header>
-  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-  <mat-card-content>
-    <p>
-      The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-      bred for hunting.
-    </p>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button color="accent">LIKE</button>
-    <button mat-raised-button color="accent">SHARE</button>
-  </mat-card-actions>
-</mat-card>
--->
+    <button id="menuBtn" mat-button [matMenuTriggerFor]="menu" class="header">
+      <mat-icon matTooltip="Manage" matTooltipPosition="right">account_circle</mat-icon>
+      User
+    </button>
+
+    <mat-menu #menu="matMenu" yPosition="below" xPosition="before" [overlapTrigger]="false">
+      <button mat-menu-item>Company settings</button>
+      <button mat-menu-item>Account & Profile</button>
+      <button mat-menu-item>Payout Information</button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item>Logout</button>
+    </mat-menu>
+  </mat-toolbar>
+  <mat-sidenav-container class="all-wrap" autosize>
+
+    <mat-sidenav #sidenav class="side-nav" mode="side" opened="true">
+      <mat-nav-list>
+
+        <a nav-item class="nav-link mat-list-item" [routerLink]="['/']" routerLinkActive="active"
+           [routerLinkActiveOptions]="{exact: true}">
+          <mat-icon matTooltip="Dashboard"
+                    matTooltipPosition="left">dashboard
+          </mat-icon>
+          <span *ngIf="isExpanded">Dashboard</span>
+        </a>
+        <a nav-item class="nav-link mat-list-item link" [routerLink]="['/bookings']" routerLinkActive="active"
+           [routerLinkActiveOptions]="{exact: true}">
+          <mat-icon matTooltip="Bookings"
+                    matTooltipPosition="left">perm_contact_calendar
+          </mat-icon>
+          <span  *ngIf="isExpanded">Bookings</span>
+        </a>
+        <a nav-item class="nav-link mat-list-item" [routerLink]="['/listings']" routerLinkActive="active"
+           [routerLinkActiveOptions]="{exact: true}">
+          <mat-icon matTooltip="Listings"
+                    matTooltipPosition="left">list
+          </mat-icon>
+          <span *ngIf="isExpanded">Listings</span>
+        </a>
+        <a nav-item class="nav-link mat-list-item" [routerLink]="['/reviews']" routerLinkActive="active"
+           [routerLinkActiveOptions]="{exact: true}">
+          <mat-icon matTooltip="Reviews"
+                    matTooltipPosition="left">grade
+          </mat-icon>
+          <span *ngIf="isExpanded">Reviews</span>
+        </a>
+        <a nav-item class="nav-link mat-list-item" [routerLink]="['/settings']" routerLinkActive="active"
+           [routerLinkActiveOptions]="{exact: true}">
+          <mat-icon matTooltip="Settings"
+                    matTooltipPosition="left">settings
+          </mat-icon>
+          <span *ngIf="isExpanded">Settings</span>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+
+    <main class="content">
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-container>
+  <footer>
+    &copy; HumHere 2018
+  </footer>
+
+</div>
+

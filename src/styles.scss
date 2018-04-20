@@ -11,8 +11,8 @@
 
 @include mat-core();
 
-$my-app-primary: mat-palette($mat-orange);
-$my-app-accent:  mat-palette($mat-grey, 500, 500, A100);
+$my-app-primary: mat-palette($mat-deep-orange);
+$my-app-accent:  mat-palette($mat-grey);
 $my-app-warn:    mat-palette($mat-brown);
 
 $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
@@ -21,9 +21,70 @@ $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
 
 .alternate-theme {
   $alternate-primary: mat-palette($mat-light-blue);
-  $alternate-accent:  mat-palette($mat-yellow, 400);
+  $alternate-accent:  mat-palette($mat-grey);
 
   $alternate-theme: mat-light-theme($alternate-primary, $alternate-accent);
 
   @include angular-material-theme($alternate-theme);
 }
+
+/*
+ * Actual Sticky Footer Styles
+ */
+.all-wrap {
+  min-height: 82vh;
+}
+
+.page-wrap {
+  display: flex;
+  flex-direction: column;
+  min-height: 82vh;
+}
+
+.content {
+  flex: 1;
+}
+
+
+/*
+ * Make the Component injected by Router Outlet full height:
+ */
+main {
+  display: flex;
+  flex-direction: column;
+  > *:not(router-outlet) {
+    flex: 1;
+    display: block;
+  }
+}
+
+mat-sidenav {
+/*  min-width: 50px;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;*/
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+footer {
+  background: #efefef;
+  padding: 15px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.mat-button{
+  background:mat-color($my-app-primary);
+}
+
+
+.mat-card{
+  margin:10px 5px 5px 5px;
+}
+

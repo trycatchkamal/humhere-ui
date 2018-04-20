@@ -1,0 +1,18 @@
+
+a.active {
+  background: tomato;
+}
+
+a.mat-list-item{
+  display:flex;
+}
+
+a>mat-icon{
+  margin-left: 10px;
+  margin-right: 10px;
+  vertical-align: center;
+}
+
+.mat-button{
+  background: transparent;
+}
