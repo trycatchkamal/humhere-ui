@@ -1,8 +1,3 @@
-
-a.active {
-  background: tomato;
-}
-
 a.mat-list-item{
   display:flex;
 }
@@ -15,4 +10,8 @@ a>mat-icon{
 
 .mat-button{
   background: transparent;
+}
+
+a.active {
+  background: tomato;
 }
