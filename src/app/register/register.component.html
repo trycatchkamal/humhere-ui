@@ -35,28 +35,28 @@
 
         <mat-form-field class="full-width-input">
           <input matInput placeholder="Firstname"
-                 formControlName="firstname" required>
+                 formControlName="firstname" required [(ngModel)]="user.firstname">
           <mat-error *ngIf="isFieldInvalid('firstname')">
             Please inform your first name
           </mat-error>
         </mat-form-field> <mat-form-field class="full-width-input">
         <input matInput placeholder="Lastname"
                formControlName="lastname" required>
-        <mat-error *ngIf="isFieldInvalid('lastname')">
+        <mat-error *ngIf="isFieldInvalid('lastname')" [(ngModel)]="user.lastname">
           Please inform your last name
         </mat-error>
       </mat-form-field>
         <mat-form-field class="full-width-input">
           <input matInput placeholder="Username"
-                 formControlName="userName" required>
-          <mat-error *ngIf="isFieldInvalid('userName')">
+                 formControlName="username" required>
+          <mat-error *ngIf="isFieldInvalid('username')" [(ngModel)]="user.username">
             Please inform your user name
           </mat-error>
         </mat-form-field>
       <mat-form-field class="full-width-input">
         <input matInput type="password" placeholder="Password"
                formControlName="password" required>
-        <mat-error *ngIf="isFieldInvalid('userName')">
+        <mat-error *ngIf="isFieldInvalid('username')" [(ngModel)]="user.password">
           Please inform your password
         </mat-error>
       </mat-form-field>

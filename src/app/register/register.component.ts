@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { AlertService, UserService, AuthService } from '../services/index';
+import {User} from "../models/user";
 
 @Component({
   moduleId: module.id.toString(),
@@ -11,7 +12,7 @@ import { AlertService, UserService, AuthService } from '../services/index';
 })
 
 export class RegisterComponent {
-  model:any = {};
+  user:User= <User>{};
   loading = false;
   form:FormGroup;
   private formSubmitAttempt:boolean;
@@ -27,7 +28,7 @@ export class RegisterComponent {
     this.form = this.fb.group({
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
-      userName: ['', Validators.required],
+      username: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
@@ -35,16 +36,20 @@ export class RegisterComponent {
   register() {
     if (this.form.valid) {
       this.loading = true;
-      this.userService.create(this.model)
+      this.router.navigate(['/login']);
+
+      /*this.userService.create(this.user)
         .subscribe(
           data => {
             this.alertService.success('Registration successful', true);
             this.router.navigate(['/login']);
+            console.log('data');
           },
           error => {
+            console.log(error);
             this.alertService.error(error);
             this.loading = false;
-          });
+          });*/
     }
     this.formSubmitAttempt = true;
   }
